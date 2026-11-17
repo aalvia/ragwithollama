@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AquaRAG - Asistente Inteligente Camaronero</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Conocimiento local · Ollama · ChromaDB</p>
+      <h1>AquaRAG</h1>
+      <p class="subtitle">Asistente inteligente camaronero</p>
+    </div>
+    <p id="context-badge" class="badge">Contexto: …</p>
+  </header>
+
+  <main class="layout">
+    <section class="chat" aria-label="Conversación">
+      <div id="messages" class="messages">
+        <article class="bubble assistant">
+          <p>
+            Pregunta sobre cultivo de camarón blanco. La respuesta usa los documentos
+            indexados y muestra la fuente. El material es educativo y no reemplaza
+            el criterio de un técnico.
+          </p>
+        </article>
+      </div>
+      <form id="chat-form" class="composer">
+        <label class="sr-only" for="question">Pregunta</label>
+        <textarea id="question" rows="2" placeholder="Ejemplo: ¿Cómo se calcula el factor de conversión alimenticia?" required></textarea>
+        <button id="send-button" type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <aside class="panel" aria-label="Documentos y estado">
+      <h2>Base documental</h2>
+      <dl class="metrics">
+        <div><dt>Documentos</dt><dd id="doc-count">–</dd></div>
+        <div><dt>Fragmentos</dt><dd id="chunk-count">–</dd></div>
+        <div><dt>Ollama</dt><dd id="ollama-status">–</dd></div>
+        <div><dt>Modelo</dt><dd id="model-name">–</dd></div>
+      </dl>
+      <p id="index-time" class="muted">Última indexación: –</p>
+      <div class="actions">
+        <button id="index-button" type="button">Indexar documentos</button>
+        <button id="refresh-button" type="button">Actualizar información</button>
+        <button id="health-button" type="button">Consultar estado</button>
+      </div>
+      <p id="panel-message" class="panel-message" role="status"></p>
+      <ul id="document-list" class="document-list"></ul>
+    </aside>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
